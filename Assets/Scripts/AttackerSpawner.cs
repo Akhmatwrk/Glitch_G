@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    [SerializeField] Attacker lizardPrefab;
+    [SerializeField] GameObject lizardPrefab;
     [SerializeField] float MinTimeDelay = 1f;
     [SerializeField] float MaxTimeDelay = 5f;
 
@@ -37,6 +37,9 @@ public class AttackerSpawner : MonoBehaviour
             transform.position,
             Quaternion.identity);
     }
+
+
+
 
     // Update is called once per frame
     void Update()
