@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnDefender : MonoBehaviour
 {
-    [SerializeField] GameObject cactus;
+    Defender defender;
 
     private void OnMouseDown()
     {
@@ -28,10 +28,13 @@ public class SpawnDefender : MonoBehaviour
        // Debug.Log(newX + " " + newY);
         return new Vector2(newX, newY);
     }
-
+    public void SetDefender(Defender currentDefender)
+    {
+        defender = currentDefender;
+    }
 
     private void SpawndDefender(Vector2 position)
     {
-        GameObject defender = Instantiate(cactus, position, Quaternion.identity) as GameObject;
+        Defender defenderOnScene = Instantiate(defender, position, Quaternion.identity) as Defender;
     }
 }

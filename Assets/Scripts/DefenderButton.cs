@@ -6,6 +6,8 @@ public class DefenderButton : MonoBehaviour
 {
     SpriteRenderer m_SpriteRenderer;
 
+    [SerializeField] Defender defender;
+
 
     private void OnMouseDown()
     {
@@ -16,17 +18,10 @@ public class DefenderButton : MonoBehaviour
         }
         m_SpriteRenderer = this.GetComponent<SpriteRenderer>();
         m_SpriteRenderer.color = Color.white;
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        FindObjectOfType<SpawnDefender>().SetDefender(defender);
     }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
