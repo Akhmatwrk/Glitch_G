@@ -522,7 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219d7017e4d857746b1908d1fe31a02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defender: {fileID: 0}
+  defender: {fileID: 2120466375397432629, guid: a5dde56e0bf499843870b556611f7371,
+    type: 3}
 --- !u!61 &913352138
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1337,7 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50e5f04fd614a74aafa7d37a68d4e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stars: 100
+  stars: 0
 --- !u!1001 &1629553584743986920
 PrefabInstance:
   m_ObjectHideFlags: 0

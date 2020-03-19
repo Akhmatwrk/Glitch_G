@@ -20,5 +20,10 @@ public class Defender : MonoBehaviour
         starDisplay.SpendStars(amount);
     }
 
+    public int GetStarCost()
+    {
+        return starCost;
+    }
+
 }
 
