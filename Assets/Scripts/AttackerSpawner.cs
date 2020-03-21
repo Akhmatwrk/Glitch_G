@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject lizardPrefab;
+    [SerializeField] Attacker attackerPrefab;
     [SerializeField] float MinTimeDelay = 1f;
     [SerializeField] float MaxTimeDelay = 5f;
 
@@ -32,10 +32,13 @@ public class AttackerSpawner : MonoBehaviour
     private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(Random.Range(MinTimeDelay, MaxTimeDelay));
-        var NewEnemy = Instantiate(
-            lizardPrefab,
+        Attacker newAttacker = Instantiate(
+            attackerPrefab,
             transform.position,
-            Quaternion.identity);
+            transform.rotation) 
+            as Attacker;
+
+        newAttacker.transform.parent = transform;
     }
 
 

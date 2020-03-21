@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnDefender : MonoBehaviour
 {
@@ -42,16 +40,38 @@ public class SpawnDefender : MonoBehaviour
     {
         var StarDisplay = FindObjectOfType<StarDisplay>();
         int defenderCost = defender.GetStarCost();
+        Defender[] defenders = FindObjectsOfType<Defender>();
+        bool GirdNotEmpty = false;
 
-        if (StarDisplay.HaveEnoughStars(defenderCost))
+        foreach (Defender defender in defenders)
+        {
+            bool IsCloseEnough = (
+                (Mathf.Abs(defender.transform.position.y - gridPos.y) <= Mathf.Epsilon)
+                && (Mathf.Abs(defender.transform.position.x - gridPos.x) <= Mathf.Epsilon)
+                );
+            if (IsCloseEnough)
+            {
+                GirdNotEmpty = true;
+            }
+        }
+
+        if (StarDisplay.HaveEnoughStars(defenderCost) && !GirdNotEmpty)
         {
             SpawndDefender(gridPos);
             StarDisplay.SpendStars(defenderCost);
+            
         }
         else
         {
 
         }
 
+    }
+
+    private void SetLaneSpawner()
+    {
+        
+
+        
     }
 }
