@@ -7,11 +7,20 @@ public class Attacker : MonoBehaviour
 {
 
     [Range (0f, 5f)]    [SerializeField] float movingSpeed = 0f;
+    [SerializeField] int damageOnBase = 10;
 
     GameObject currentTarget;
     Animator animator;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        FindObjectOfType<LevelController>().AttackerSpawned();
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelController>().AttackerDestroid();
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,6 +60,16 @@ public class Attacker : MonoBehaviour
         if (health)
         {
             health.DealDamage(damage);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        GameObject otherObject = otherCollider.gameObject;
+
+        if (otherObject.GetComponent<BaseHealth>())
+        {
+            otherObject.GetComponent<BaseHealth>().LoseHealth(damageOnBase);
         }
     }
 }

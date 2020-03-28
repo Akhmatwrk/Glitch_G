@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    [SerializeField] Attacker attackerPrefab;
+    [SerializeField] Attacker[] attackerPrefabs;
     [SerializeField] float MinTimeDelay = 1f;
     [SerializeField] float MaxTimeDelay = 5f;
 
@@ -32,16 +32,24 @@ public class AttackerSpawner : MonoBehaviour
     private IEnumerator SpawnEnemy()
     {
         yield return new WaitForSeconds(Random.Range(MinTimeDelay, MaxTimeDelay));
+        Spawn(Random.Range(0, attackerPrefabs.Length));
+    }
+
+    private void Spawn(int attackerId)
+    {
         Attacker newAttacker = Instantiate(
-            attackerPrefab,
-            transform.position,
-            transform.rotation) 
-            as Attacker;
+                    attackerPrefabs[attackerId],
+                    transform.position,
+                    transform.rotation)
+                    as Attacker;
 
         newAttacker.transform.parent = transform;
     }
 
-
+    public void StopSpawning()
+    {
+        spawn = false;
+    }
 
 
     // Update is called once per frame

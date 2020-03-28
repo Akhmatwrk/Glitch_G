@@ -22,7 +22,14 @@ public class Fox : MonoBehaviour
 
         if (otherObject.GetComponent<Defender>())
         {
-            GetComponent<Attacker>().Attack(otherObject);
+            if (otherObject.name == "Tomb Stone")
+            {
+                GetComponent<Animator>().SetTrigger("jumpTrigger");
+            }
+            else
+            {
+                GetComponent<Attacker>().Attack(otherObject);
+            }
         }
     }
 
