@@ -58,4 +58,9 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("Start Screen");
         Time.timeScale = 1;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
