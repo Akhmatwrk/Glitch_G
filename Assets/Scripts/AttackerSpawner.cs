@@ -16,6 +16,8 @@ public class AttackerSpawner : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        numberOfSpawns = PlayerPrefsController.GetMasterDifficulty();
+
         int currentSpawn = 0;
         do
         {

@@ -59,6 +59,12 @@ public class LevelLoader : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void LoadOptionsScreen()
+    {
+        SceneManager.LoadScene("Options Screen");
+        Time.timeScale = 1;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
